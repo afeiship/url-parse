@@ -57,4 +57,24 @@ describe('urlParse', () => {
     expect(parsed.protocol).toBe('http:');
     expect(parsed.hostname).toBe('');
   });
+
+  // example.com:8080/audio
+  test('should handle URLs with port', () => {
+    const url = 'example.com:8080/audio';
+    const parsed = urlParse(url);
+    expect(parsed.protocol).toBe('http:');
+    expect(parsed.hostname).toBe('example.com');
+    expect(parsed.port).toBe('8080');
+    expect(parsed.pathname).toBe('/audio');
+  });
+
+  // example.com/path?param=http://another.com
+  test('should handle URLs with query params with protocol', () => {
+    const url = 'example.com/path?param=http://another.com';
+    const parsed = urlParse(url);
+    expect(parsed.protocol).toBe('http:');
+    expect(parsed.hostname).toBe('example.com');
+    expect(parsed.pathname).toBe('/path');
+    expect(parsed.query).toBe('?param=http://another.com');
+  });
 });

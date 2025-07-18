@@ -1,6 +1,9 @@
 
 import urlParseOrg from 'url-parse';
 
+// https://url.spec.whatwg.org/#default-port
+// type Protocol = 'http' | 'https' | 'ws' | 'wss' | 'ftp' | 'gopher' | 'file';
+
 type URLParsed = {
   slashes: boolean;
   protocol: string;
@@ -19,9 +22,18 @@ type URLParsed = {
   toString: () => string;
 };
 
+const hasProtocol = (url: string): boolean => {
+  return url.startsWith('http://') ||
+        url.startsWith('https://') ||
+        url.startsWith('ws://') ||
+        url.startsWith('wss://') ||
+        url.startsWith('ftp://') ||
+        url.startsWith('gopher://') ||
+        url.startsWith('file://');
+};
+
 const urlParse = (url: string): URLParsed => {
-  const hasProtocol = url.includes('://');
-  if (!hasProtocol) url = `http://${url}`;
+  if (!hasProtocol(url)) url = `http://${url}`;
   return urlParseOrg(url);
 };
 
