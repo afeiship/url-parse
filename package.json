@@ -1,6 +1,6 @@
 {
   "name": "@jswork/url-parse",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "To parse an URL to object.",
   "npmClient": "pnpm",
   "main": "dist/index.cjs.js",
@@ -34,10 +34,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "homepage": "https://js.work",
-  "keywords": [
-    "url-parse",
-    "url"
-  ],
+  "keywords": [],
   "dependencies": {
     "url-parse": "^1.5.10"
   }
