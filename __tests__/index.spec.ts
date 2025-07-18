@@ -77,4 +77,14 @@ describe('urlParse', () => {
     expect(parsed.pathname).toBe('/path');
     expect(parsed.query).toBe('?param=http://another.com');
   });
+
+  // test ip address with port
+  test('should handle URLs with IP address with port', () => {
+    const url = '192.168.1.1:8080/dashboard';
+    const parsed = urlParse(url);
+    expect(parsed.protocol).toBe('http:');
+    expect(parsed.hostname).toBe('192.168.1.1');
+    expect(parsed.port).toBe('8080');
+    expect(parsed.pathname).toBe('/dashboard');
+  });
 });

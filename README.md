@@ -15,9 +15,26 @@ yarn add @jswork/url-parse
 ```js
 import urlParse from '@jswork/url-parse';
 
-urlParse(1024);
+// URL with protocol
+const parsedUrl1 = urlParse('https://www.example.com/path?query=value#hash');
+console.log(parsedUrl1.protocol); // 'https:'
+console.log(parsedUrl1.hostname); // 'www.example.com'
 
-// [1000, 0, 20, 4]
+// URL without protocol (http:// will be added)
+const parsedUrl2 = urlParse('www.example.com/another-path');
+console.log(parsedUrl2.protocol); // 'http:'
+console.log(parsedUrl2.hostname); // 'www.example.com'
+
+// URL with only domain
+const parsedUrl3 = urlParse('example.com');
+console.log(parsedUrl3.protocol); // 'http:'
+console.log(parsedUrl3.hostname); // 'example.com'
+console.log(parsedUrl3.pathname); // '/'
+
+// URL with IP address
+const parsedUrl4 = urlParse('192.168.1.1/dashboard');
+console.log(parsedUrl4.protocol); // 'http:'
+console.log(parsedUrl4.hostname); // '192.168.1.1'
 ```
 
 ## license
