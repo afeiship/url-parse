@@ -87,4 +87,11 @@ describe('urlParse', () => {
     expect(parsed.port).toBe('8080');
     expect(parsed.pathname).toBe('/dashboard');
   });
+
+  test('changed protocal should be set', ()=>{
+    const url = 'http://example.com/path?query=value#hash';
+    const parsed = urlParse(url);
+    parsed.set('protocol', 'https:');
+    expect(parsed.protocol).toBe('https:');
+  })
 });
