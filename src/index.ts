@@ -33,7 +33,8 @@ const hasProtocol = (url: string): boolean => {
 };
 
 const urlParse = (url: string): URLParsed => {
-  if (!hasProtocol(url)) url = `http://${url}`;
+  const protocaled = hasProtocol(url);
+  if (!protocaled) url = `http://${url}`;
   return urlParseOrg(url);
 };
 
