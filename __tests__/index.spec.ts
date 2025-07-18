@@ -94,4 +94,11 @@ describe('urlParse', () => {
     parsed.set('protocol', 'https:');
     expect(parsed.protocol).toBe('https:');
   })
+
+  // tostring
+  test('should return string', () => {
+    const url = 'http://example.com/path?query=value#hash';
+    const parsed = urlParse(url);
+    expect(parsed.toString()).toBe('http://example.com/path?query=value#hash');
+  });
 });
