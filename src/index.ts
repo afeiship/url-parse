@@ -23,13 +23,13 @@ type URLParsed = {
 };
 
 const hasProtocol = (url: string): boolean => {
-  return url.startsWith('http://') ||
-        url.startsWith('https://') ||
-        url.startsWith('ws://') ||
-        url.startsWith('wss://') ||
-        url.startsWith('ftp://') ||
-        url.startsWith('gopher://') ||
-        url.startsWith('file://');
+  return url.startsWith('http:') ||
+        url.startsWith('https:') ||
+        url.startsWith('ws:') ||
+        url.startsWith('wss:') ||
+        url.startsWith('ftp:') ||
+        url.startsWith('gopher:') ||
+        url.startsWith('file:');
 };
 
 const urlParse = (url: string): URLParsed => {
